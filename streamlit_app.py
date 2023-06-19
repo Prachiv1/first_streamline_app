@@ -35,7 +35,7 @@ try:
 
 
 #import snowflake.connector
-streamlist.header("The fruit load list contains:")
+streamlit.header("The fruit load list contains:")
 def get_fruit_load_list():
   with mycnx.cursor() as my_curr:
     mycur.execute("Select * from fruit_load_list")
