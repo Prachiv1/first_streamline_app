@@ -31,7 +31,7 @@ try:
   else:
     back_from_function = get_fruityvice_data(fruit_choice)
     streamlit.dataframe(back_from_function)
-streamlit.stop()
+
 
 
 #import snowflake.connector
@@ -40,6 +40,13 @@ def get_fruit_load_list():
   with mycnx.cursor() as my_curr:
     mycur.execute("Select * from fruit_load_list")
     return my_curr.fetchall()
+if streamlit.button('Get Fruit Load list'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows = get_fruit_load_list()
+  streamlit.dataframe(my_data_rows)
+streamlit.stop()
+  
+  
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 add_my_fruit = streamlit.text_input("What fruit would you like to add?")
