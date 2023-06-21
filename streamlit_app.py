@@ -59,9 +59,9 @@ def insert_row_snowflake(new_fruit):
     my_cur.execute("insert into fruit_load_list values(%s)", (new_fruit))
     return "Thanks for adding " + new_fruit
 new_fruit = streamlit.text_input("Add a new fruit:")
-if st.button("Add Fruit") and new_fruit:
+if streamlit.button("Add Fruit") and new_fruit:
     result = insert_row_snowflake(new_fruit)
-    st.success(result)
+    streamlit.success(result)
 
 
 
